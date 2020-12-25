@@ -54,6 +54,12 @@ public interface AuxiliaryChart {
     void add(String code, String name, Account general);
 
     /**
+     * Remove an account.
+     * @param code Code
+     */
+    void remove(String code);
+
+    /**
      * Contain code's account.
      * @param code Code
      * @return Yes or not

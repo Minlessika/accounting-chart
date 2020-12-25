@@ -86,6 +86,12 @@ public interface Chart {
     void add(String code, String name);
 
     /**
+     * Remove an account.
+     * @param code Code
+     */
+    void remove(String code);
+
+    /**
      * Contain code's account.
      * @param code Code
      * @return Yes or not
