@@ -22,16 +22,22 @@
  * SOFTWARE.
  */
 
-package com.minlessika.accounting.chart.domain;
+package com.minlessika.accounting.chart.domain.api;
 
 /**
- * Chart of general accounts.
+ * An account.
  *
- * <p>It's used to order accounts.
+ * <p>Account is used to create entries.
  *
  * @since 1.0.0
  */
-public interface Chart {
+public interface Account {
+
+    /**
+     * Code.
+     * @return Code
+     */
+    String code();
 
     /**
      * Name.
@@ -40,69 +46,41 @@ public interface Chart {
     String name();
 
     /**
-     * Version.
-     * @return Version
+     * Is reconciliation allowed.
+     * @return Yes or no
      */
-    String version();
+    boolean isReconciliationAllowed();
 
     /**
-     * Chart state.
-     * @return State
+     * Is deprecated.
+     * @return Yes or no
      */
-    ChartState state();
+    boolean isDeprecated();
 
     /**
-     * Policy.
-     * @return Policy
-     */
-    ChartPolicy policy();
-
-    /**
-     * Entity.
-     * @return Entity
-     */
-    Entity entity();
-
-    /**
-     * Select a number of accounts.
-     * @param start Index of first {@link Account}
-     * @param limit Number of {@link Account} to select
-     * @param filter Filter on code or name
-     * @return Accounts selected
-     */
-    Iterable<Account> iterate(int start, int limit, String filter);
-
-    /**
-     * Total number of accounts.
-     * @return Total
-     */
-    int size();
-
-    /**
-     * Add an account.
+     * Update informations.
      * @param code Code
      * @param name Name
+     * @throws IllegalArgumentException If code already exists
      */
-    void add(String code, String name);
+    void update(String code, String name);
 
     /**
-     * Remove an account.
-     * @param code Code
+     * Depreciate account.
+     * @param enable Depreciate or not
      */
-    void remove(String code);
+    void depreciate(boolean enable);
 
     /**
-     * Contain code's account.
-     * @param code Code
-     * @return Yes or not
+     * Allow reconciliation on account.
+     * @param enable Allow or not
      */
-    boolean contains(String code);
+    void allowReconciliation(boolean enable);
 
     /**
-     * Get account by code.
-     * @param code Code
-     * @return Account
-     * @throws IllegalArgumentException If not found
+     * Clone account.
+     * @param code Code of new account
+     * @param name Name of new account
      */
-    Account get(String code);
+    void clone(String code, String name);
 }

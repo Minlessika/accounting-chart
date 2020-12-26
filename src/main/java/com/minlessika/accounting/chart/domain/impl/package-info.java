@@ -22,40 +22,13 @@
  * SOFTWARE.
  */
 
-package com.minlessika.accounting.chart.domain;
-
 /**
- * An entity.
- *
- * <p>It's used to define entity that we perform accounting operations for.
+ * Accounting chart domain api.
  *
  * @since 1.0.0
+ * @author Olivier B. OURA (baudolivier.oura@minlessika.com)
+ * @see <a href="https://accounting.minlessika.com">project site accounting.minlessika.com</a>
+ * @see <a href="https://github.com/Minlessika/accounting-chart">Github project</a>
  */
-public interface Entity {
 
-    /**
-     * Name.
-     * @return Name
-     */
-    String name();
-
-    /**
-     * Address.
-     * @return Address
-     */
-    String address();
-
-    /**
-     * ID number.
-     * @return ID
-     */
-    String number();
-
-    /**
-     * Update informations data.
-     * @param name Name
-     * @param address Address
-     * @param number ID number
-     */
-    void update(String name, String address, String number);
-}
+package com.minlessika.accounting.chart.domain.impl;

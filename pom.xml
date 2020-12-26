@@ -6,7 +6,17 @@
   <name>Accounting chart module</name>
   <description>Manage charts of accounts</description>
   
-  <dependencies>	
+  <dependencies>
+    <dependency>
+	    <groupId>com.minlessika</groupId>
+	    <artifactId>takes-utils</artifactId>
+	    <version>0.0.1</version>
+	</dependency>
+    <dependency>
+	    <groupId>com.jcabi</groupId>
+	    <artifactId>jcabi-jdbc</artifactId>
+	    <version>0.17.3</version>
+	</dependency>	
    	<dependency>
 	    <groupId>junit</groupId>
 	    <artifactId>junit</artifactId>
@@ -19,6 +29,22 @@
 	    <version>1.3</version>
 	    <scope>test</scope>
 	</dependency>
+	<dependency>
+	    <groupId>com.h2database</groupId>
+	    <artifactId>h2</artifactId>
+	    <version>1.4.200</version>
+	    <scope>test</scope>
+	</dependency>
+	<dependency>
+	    <groupId>org.liquibase</groupId>
+	    <artifactId>liquibase-core</artifactId>
+	    <version>3.2.2</version>
+	</dependency>
+	<dependency>
+        <groupId>com.zaxxer</groupId>
+        <artifactId>HikariCP</artifactId>
+        <version>2.5.1</version>
+    </dependency>
   </dependencies>
   
   <build>
@@ -37,6 +63,11 @@
 	      <version>0.18.19</version>
 	      <configuration>
 	        <license>file:${basedir}/LICENSE.txt</license>
+	        <excludes>
+	          <exclude>checkstyle:/src/main/resources/.*</exclude>
+	          <exclude>duplicatefinder:.*</exclude>
+	          <exclude>dependencies:.*</exclude>
+		    </excludes>
 	      </configuration>
 	      <executions>
 	        <execution>

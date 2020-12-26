@@ -22,51 +22,12 @@
  * SOFTWARE.
  */
 
-package com.minlessika.accounting.chart.domain;
-
 /**
- * State of a chart of accounts.
+ * Accounting chart domain api.
+ *
  * @since 1.0.0
+ * @author Olivier B. OURA (baudolivier.oura@minlessika.com)
+ * @see <a href="https://accounting.minlessika.com">project site accounting.minlessika.com</a>
+ * @see <a href="https://github.com/Minlessika/accounting-chart">Github project</a>
  */
-public enum ChartState {
-
-    /**
-     * None.
-     */
-    NONE {
-        @Override
-        public String toString() {
-            return "Non défini";
-        }
-    },
-
-    /**
-     * Draft.
-     */
-    DRAFT {
-        @Override
-        public String toString() {
-            return "Draft";
-        }
-    },
-
-    /**
-     * Active.
-     */
-    ACTIVE {
-        @Override
-        public String toString() {
-            return "Active";
-        }
-    },
-
-    /**
-     * Inactive.
-     */
-    INACTIVE {
-        @Override
-        public String toString() {
-            return "Inactive";
-        }
-    };
-}
+package com.minlessika.accounting.chart.domain.api;

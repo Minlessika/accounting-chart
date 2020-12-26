@@ -22,55 +22,39 @@
  * SOFTWARE.
  */
 
-package com.minlessika.accounting.chart.domain;
+package com.minlessika.accounting.chart.domain.api;
 
 /**
- * An auxiliary chart.
+ * Charts.
  * @since 1.0.0
  */
-public interface AuxiliaryChart {
+public interface Charts {
 
     /**
-     * Select a number of accounts.
-     * @param start Index of first {@link Account}
-     * @param limit Number of {@link Account} to select
-     * @param filter Filter on code or name
-     * @return Accounts selected
+     * Iterate them all.
+     * <p>Ordered by id ascending.
+     * @return All charts
      */
-    Iterable<Account> iterate(int start, int limit, String filter);
+    Iterable<Chart> iterate();
 
     /**
-     * Total number of accounts.
-     * @return Total
+     * Total number of charts.
+     * @return Number
      */
     int size();
 
     /**
-     * Add auxiliary account.
-     * @param code Code
-     * @param name Name
-     * @param general General account
+     * Get chart by its ID.
+     * @param number ID
+     * @return Chart
      */
-    void add(String code, String name, Account general);
+    Chart get(Long number);
 
     /**
-     * Remove an account.
-     * @param code Code
+     * Create a chart.
+     * @param digits Number of digits of an account code
+     * @param system Treasure system
+     * @return Chart created
      */
-    void remove(String code);
-
-    /**
-     * Contain code's account.
-     * @param code Code
-     * @return Yes or not
-     */
-    boolean contains(String code);
-
-    /**
-     * Get account by code.
-     * @param code Code
-     * @return Account
-     * @throws IllegalArgumentException If not found
-     */
-    Account get(String code);
+    Chart add(int digits, TreasureSystem system);
 }

@@ -22,41 +22,50 @@
  * SOFTWARE.
  */
 
-package com.minlessika.accounting.chart.domain;
+package com.minlessika.accounting.chart.domain.api;
 
 /**
- * Treasure system.
+ * A policy of an accounting.
+ *
+ * <p>It defines how accounting should work.
+ *
  * @since 1.0.0
  */
-public enum TreasureSystem {
+public interface Policy {
 
     /**
-     * None.
+     * Bank account code prefix.
+     * @return Prefix
      */
-    NONE {
-        @Override
-        public String toString() {
-            return "Non défini";
-        }
-    },
+    String bankAccountCodePrefix();
 
     /**
-     * Système Minimal de Trésorerie.
+     * Cash account code prefix.
+     * @return Prefix
      */
-    SMT {
-        @Override
-        public String toString() {
-            return "Système Minimal de Trésorerie";
-        }
-    },
+    String cashAccountCodePrefix();
 
     /**
-     * Système Normal de Trésorerie.
+     * Receivable account code prefix.
+     * @return Prefix
      */
-    SNT {
-        @Override
-        public String toString() {
-            return "Système Normal de Trésorerie";
-        }
-    };
+    String receivableAccountCodePrefix();
+
+    /**
+     * Payable account code prefix.
+     * @return Prefix
+     */
+    String payableAccountCodePrefix();
+
+    /**
+     * Treasure system.
+     * @return Treasure system
+     */
+    TreasureSystem treasureSystem();
+
+    /**
+     * Change treasure system.
+     * @param system Treasure system
+     */
+    void changeTreasureSystem(TreasureSystem system);
 }

@@ -22,69 +22,62 @@
  * SOFTWARE.
  */
 
-package com.minlessika.accounting.chart.domain;
+package com.minlessika.accounting.chart.domain.api;
 
 /**
- * An account.
- *
- * <p>Account is used to create entries.
- *
- * @since 1.0.0
+ * Accounts of a chart.
+ * @since 0.0.1
  */
-public interface Account {
+public interface Accounts {
 
     /**
-     * Code.
-     * @return Code
+     * Iterate all of them.
+     * <p>Ordered by code ascending.
+     * @return All accounts
      */
-    String code();
+    Iterable<Account> iterate();
 
     /**
-     * Name.
-     * @return Name
+     * Select a number of accounts.
+     * <p>Ordered by code ascending.
+     * @param start Index of first {@link Account}
+     * @param limit Number of {@link Account} to select
+     * @param filter Filter on code or name
+     * @return Accounts selected
      */
-    String name();
+    Iterable<Account> iterate(int start, int limit, String filter);
 
     /**
-     * Is reconciliation allowed.
-     * @return Yes or no
+     * Total number of accounts.
+     * @return Total
      */
-    boolean isReconciliationAllowed();
+    int size();
 
     /**
-     * Is deprecated.
-     * @return Yes or no
+     * Contain code's account.
+     * @param code Code
+     * @return Yes or not
      */
-    boolean isDeprecated();
+    boolean contains(String code);
 
     /**
-     * Change code.
-     * @param code New code
+     * Get account by code.
+     * @param code Code
+     * @return Account
+     * @throws IllegalArgumentException If not found
      */
-    void changeCode(String code);
+    Account get(String code);
 
     /**
-     * Rename account.
-     * @param name New name
+     * Add an account.
+     * @param code Code
+     * @param name Name
      */
-    void rename(String name);
+    void add(String code, String name);
 
     /**
-     * Depreciate account.
-     * @param enable Depreciate or not
+     * Remove an account.
+     * @param code Code
      */
-    void depreciate(boolean enable);
-
-    /**
-     * Allow reconciliation on account.
-     * @param enable Allow or not
-     */
-    void allowReconciliation(boolean enable);
-
-    /**
-     * Clone account.
-     * @param code Code of new account
-     * @param name Name of new account
-     */
-    void clone(String code, String name);
+    void remove(String code);
 }

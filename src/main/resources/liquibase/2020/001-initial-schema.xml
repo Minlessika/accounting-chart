@@ -1,0 +1,18 @@
+<databaseChangeLog xmlns='http://www.liquibase.org/xml/ns/dbchangelog'
+  xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+  xsi:schemaLocation='http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd'
+  logicalFilePath="001-initial-schema.xml">
+  <changeSet id='001' author='baudoliver7'>
+  
+    <sql>
+      CREATE TABLE accounting_chart (
+        id BIGSERIAL NOT NULL,
+        type VARCHAR(25) NOT NULL,
+        state VARCHAR(10) NOT NULL,
+        version VARCHAR(10) NOT NULL,
+        CONSTRAINT accounting_chart_pkey PRIMARY KEY (id)
+      )
+    </sql>
+    
+  </changeSet>
+</databaseChangeLog>

@@ -22,13 +22,13 @@
  * SOFTWARE.
  */
 
-package com.minlessika.accounting.chart.domain;
+package com.minlessika.accounting.chart.domain.api;
 
 /**
- * Type of an account chart.
+ * Treasure system.
  * @since 1.0.0
  */
-public enum ChartType {
+public enum TreasureSystem {
 
     /**
      * None.
@@ -41,12 +41,22 @@ public enum ChartType {
     },
 
     /**
-     * SYSCOHADA.
+     * Système Minimal de Trésorerie.
      */
-    SYSCOHADA {
+    SMT {
         @Override
         public String toString() {
-            return "SYSCOHADA";
+            return "Système Minimal de Trésorerie";
+        }
+    },
+
+    /**
+     * Système Normal de Trésorerie.
+     */
+    SNT {
+        @Override
+        public String toString() {
+            return "Système Normal de Trésorerie";
         }
     };
 }

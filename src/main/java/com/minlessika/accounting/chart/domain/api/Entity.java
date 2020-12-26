@@ -22,50 +22,40 @@
  * SOFTWARE.
  */
 
-package com.minlessika.accounting.chart.domain;
+package com.minlessika.accounting.chart.domain.api;
 
 /**
- * A policy of a chart.
+ * An entity.
  *
- * <p>It's used to define how chart works.
+ * <p>It's used to define entity that we perform accounting operations for.
  *
  * @since 1.0.0
  */
-public interface ChartPolicy {
+public interface Entity {
 
     /**
-     * Bank account code prefix.
-     * @return Prefix
+     * Name.
+     * @return Name
      */
-    String bankAccountCodePrefix();
+    String name();
 
     /**
-     * Cash account code prefix.
-     * @return Prefix
+     * Address.
+     * @return Address
      */
-    String cashAccountCodePrefix();
+    String address();
 
     /**
-     * Receivable account code prefix.
-     * @return Prefix
+     * ID number.
+     * @return ID
      */
-    String receivableAccountCodePrefix();
+    String number();
 
     /**
-     * Payable account code prefix.
-     * @return Prefix
+     * Update informations data.
+     * @param name Name
+     * @param address Address
+     * @param number ID number
      */
-    String payableAccountCodePrefix();
-
-    /**
-     * Treasure system.
-     * @return Treasure system
-     */
-    TreasureSystem treasureSystem();
-
-    /**
-     * Change treasure system.
-     * @param system Treasure system
-     */
-    void changeTreasureSystem(TreasureSystem system);
+    void update(String name, String address, String number);
 }
