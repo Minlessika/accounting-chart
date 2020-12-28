@@ -22,13 +22,12 @@
  * SOFTWARE.
  */
 
-package com.minlessika.accounting.chart.domain.impl.tests;
+package com.minlessika.accounting.chart.domain.pg.tests;
 
-import com.database.mock.EmbeddedPostgreSQLDataSource;
-import com.database.mock.LiquibaseDataSource;
 import com.minlessika.accounting.chart.domain.api.Chart;
 import com.minlessika.accounting.chart.domain.api.ChartState;
-import com.minlessika.accounting.chart.domain.impl.PgChart;
+import com.minlessika.accounting.chart.domain.pg.PgChart;
+import com.minlessika.lightweight.db.EmbeddedPostgreSQLDataSource;
 import java.sql.Connection;
 import java.sql.Statement;
 import javax.sql.DataSource;
@@ -52,14 +51,23 @@ public class PgChartTest {
     @SuppressWarnings("PMD.JUnit4TestShouldUseBeforeAnnotation")
     @BeforeClass
     public static void setUp() throws Exception {
-        source = new LiquibaseDataSource(
-            new EmbeddedPostgreSQLDataSource("accounting_db"),
-            "liquibase/db.changelog-master.xml"
-        );
+        source = new EmbeddedPostgreSQLDataSource();
         try (
             Connection connection = source.getConnection();
             Statement s = connection.createStatement()
         ) {
+            s.execute(
+                String.join(
+                    " ",
+                    "CREATE TABLE accounting_chart (",
+                    "   id BIGSERIAL NOT NULL,",
+                    "   type VARCHAR(25) NOT NULL,",
+                    "   state VARCHAR(10) NOT NULL,",
+                    "   version VARCHAR(10) NOT NULL,",
+                    "   CONSTRAINT accounting_chart_pkey PRIMARY KEY (id)",
+                    ")"
+                )
+            );
             s.execute(
                 String.join(
                     " ",

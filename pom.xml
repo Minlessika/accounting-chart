@@ -35,15 +35,11 @@
 	    <version>1.4.200</version>
 	    <scope>test</scope>
 	</dependency>
-	<dependency>
-	    <groupId>org.liquibase</groupId>
-	    <artifactId>liquibase-core</artifactId>
-	    <version>3.2.2</version>
-	</dependency>
-	<dependency>
-        <groupId>com.zaxxer</groupId>
-        <artifactId>HikariCP</artifactId>
-        <version>2.5.1</version>
+    <dependency>
+        <groupId>com.minlessika.incubator</groupId>
+        <artifactId>lightweight-db</artifactId>
+        <version>0.1.0</version>
+        <scope>test</scope>
     </dependency>
   </dependencies>
   

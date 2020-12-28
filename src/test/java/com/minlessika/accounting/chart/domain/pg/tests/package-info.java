@@ -23,7 +23,7 @@
  */
 
 /**
- * Accounting chart domain api.
+ * Accounting chart domain implementations tests.
  *
  * @since 1.0.0
  * @author Olivier B. OURA (baudolivier.oura@minlessika.com)
@@ -31,4 +31,4 @@
  * @see <a href="https://github.com/Minlessika/accounting-chart">Github project</a>
  */
 
-package com.minlessika.accounting.chart.domain.impl;
+package com.minlessika.accounting.chart.domain.pg.tests;

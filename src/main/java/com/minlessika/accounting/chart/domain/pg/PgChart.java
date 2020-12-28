@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-package com.minlessika.accounting.chart.domain.impl;
+package com.minlessika.accounting.chart.domain.pg;
 
 import com.jcabi.jdbc.JdbcSession;
 import com.jcabi.jdbc.SingleOutcome;
