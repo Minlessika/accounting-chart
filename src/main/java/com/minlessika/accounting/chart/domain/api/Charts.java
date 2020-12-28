@@ -41,7 +41,7 @@ public interface Charts {
      * Total number of charts.
      * @return Number
      */
-    int size();
+    Long size();
 
     /**
      * Get chart by its ID.
@@ -52,9 +52,15 @@ public interface Charts {
 
     /**
      * Create a chart.
-     * @param digits Number of digits of an account code
-     * @param system Treasure system
+     * @param type Type
+     * @param version Version
      * @return Chart created
      */
-    Chart add(int digits, TreasureSystem system);
+    Chart add(ChartType type, String version);
+    
+    /**
+     * Remove a chart.
+     * @param id Chart id
+     */
+    void remove(Long id);
 }
