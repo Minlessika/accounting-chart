@@ -24,13 +24,13 @@
 
 package com.minlessika.accounting.chart.domain.pg;
 
+import com.jcabi.jdbc.JdbcSession;
+import com.jcabi.jdbc.ListOutcome;
+import com.jcabi.jdbc.SingleOutcome;
 import com.minlessika.accounting.chart.domain.api.Chart;
 import com.minlessika.accounting.chart.domain.api.ChartState;
 import com.minlessika.accounting.chart.domain.api.ChartType;
 import com.minlessika.accounting.chart.domain.api.Charts;
-import com.jcabi.jdbc.JdbcSession;
-import com.jcabi.jdbc.ListOutcome;
-import com.jcabi.jdbc.SingleOutcome;
 import com.minlessika.exceptions.DatabaseException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -59,7 +59,7 @@ public final class PgCharts implements Charts {
     public Iterable<Chart> iterate() {
         try {
             return
-                new JdbcSession(source)
+                new JdbcSession(this.source)
                     .sql("SELECT id FROM accounting_chart ORDER BY id ASC")
                     .select(
                         new ListOutcome<>(
@@ -75,8 +75,8 @@ public final class PgCharts implements Charts {
                             }
                         )
                      );
-        } catch (final SQLException e) {
-            throw new DatabaseException(e);
+        } catch (final SQLException ex) {
+            throw new DatabaseException("Error on PgCharts while iterating.", ex);
         }
     }
 
@@ -96,7 +96,7 @@ public final class PgCharts implements Charts {
     }
 
     @Override
-    public Chart get(Long number) {
+    public Chart get(final Long number) {
         try {
             final Long count =
                 new JdbcSession(this.source)
@@ -121,9 +121,9 @@ public final class PgCharts implements Charts {
     }
 
     @Override
-    public Chart add(ChartType type, String version) {
+    public Chart add(final ChartType type, final String version) {
         try {
-            final Long id = 
+            final Long id =
                 new JdbcSession(this.source)
                     .sql(
                         String.join(
@@ -146,7 +146,7 @@ public final class PgCharts implements Charts {
     }
 
     @Override
-    public void remove(Long id) {
+    public void remove(final Long id) {
         try {
             new JdbcSession(this.source)
                 .sql("DELETE FROM accounting_chart WHERE id=?")

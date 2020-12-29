@@ -57,7 +57,7 @@ public interface Charts {
      * @return Chart created
      */
     Chart add(ChartType type, String version);
-    
+
     /**
      * Remove a chart.
      * @param id Chart id

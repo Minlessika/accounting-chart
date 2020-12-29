@@ -32,7 +32,6 @@ import com.minlessika.lightweight.db.EmbeddedPostgreSQLDataSource;
 import java.sql.Connection;
 import java.sql.Statement;
 import java.util.Iterator;
-
 import javax.sql.DataSource;
 import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
@@ -105,9 +104,10 @@ public class PgChartsTest {
 
     @Test
     public void tryToAddAnewChart() {
+        final String version = "2000";
         final Charts charts = new PgCharts(source);
         final Long size = charts.size();
-        final Chart chart = charts.add(ChartType.SYSCOHADA, "2000");
+        final Chart chart = charts.add(ChartType.SYSCOHADA, version);
         MatcherAssert.assertThat(
             chart.number(),
             Matchers.greaterThan(1L)
@@ -118,7 +118,7 @@ public class PgChartsTest {
         );
         MatcherAssert.assertThat(
             chart.version(),
-            Matchers.equalTo("2000")
+            Matchers.equalTo(version)
         );
         MatcherAssert.assertThat(
             charts.size(),
@@ -147,9 +147,9 @@ public class PgChartsTest {
         final Charts charts = new PgCharts(source);
         Long count = 0L;
         final Iterator<Chart> iterator = charts.iterate().iterator();
-        while(iterator.hasNext()) {
+        while (iterator.hasNext()) {
             iterator.next();
-            count++;
+            count += 1;
         }
         MatcherAssert.assertThat(
             charts.size(),
